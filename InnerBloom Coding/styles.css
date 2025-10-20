@@ -1,0 +1,1127 @@
+/* ==================== SHOELACE COMPONENT STYLING ==================== */
+/* Custom styles for Shoelace icon buttons used in breathing section */
+
+/* Main icon button styling - sets font size for icon display */
+.control-btn-shoelace {
+  font-size: 40px;
+  color: #F5F2ED; /* Light cream color for icons */
+  --sl-button-font-size-medium: 40px; /* Make buttons visible with proper sizing */
+}
+
+/* Style the base part of Shoelace button component */
+.control-btn-shoelace::part(base) {
+  color: #F5F2ED;
+  background-color: #2C2C2C;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect - changes icon color to pink */
+.control-btn-shoelace::part(base):hover {
+  color: #2C2C2C;
+  background-color: #F0A8B8;
+  transform: scale(1.1);
+}
+
+/* Make the icon larger and visible */
+.control-btn-shoelace::part(icon) {
+  font-size: 40px;
+}
+
+/* Download alert positioning - fixed to viewport top right */
+#downloadAlert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Style the base container of the alert */
+#downloadAlert::part(base) {
+  background-color: #3A7D5A; /* Green background */
+  color: #F5F2ED; /* Light text */
+  border-color: #3A7D5A;
+}
+
+/* ==================== SVG ANIMATION ==================== */
+/* Custom SVG animation for hero section arrow - requirement for SVG animation */
+
+/* Animated arrow styling with stroke animation */
+.arrow-icon-animated {
+  stroke: #F5F2ED; /* Light stroke color */
+  stroke-dasharray: 100; /* Length of dash pattern */
+  stroke-dashoffset: 100; /* Initial offset for animation */
+  animation: drawArrow 2s ease-in-out infinite; /* Continuous animation */
+}
+
+/* Keyframe animation that creates drawing effect on arrow */
+@keyframes drawArrow {
+  0% {
+    stroke-dashoffset: 100; /* Start with arrow hidden */
+    opacity: 0;
+  }
+  50% {
+    stroke-dashoffset: 0; /* Arrow fully drawn */
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -100; /* Arrow drawn in reverse */
+    opacity: 0;
+  }
+}
+
+/* ==================== GLOBAL RESET & BASE STYLES ==================== */
+/* Reset default browser styles for consistency */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Include padding and border in element width */
+}
+
+/* Prevent horizontal scrolling and set base properties */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Base body styling with custom font and background */
+body {
+  font-family: 'DM Sans', sans-serif; /* Google Font for consistent typography */
+  background-color: #f6f5f1; /* Soft cream background */
+  scroll-behavior: smooth; /* Smooth scrolling between sections */
+}
+
+/* Default section styling - full viewport height, centered content */
+section {
+  min-height: 100vh; /* Minimum full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 100px 40px; /* Generous padding for content breathing room */
+}
+
+/* ==================== SCROLLING CHARACTER STRIP ==================== */
+/* Infinite horizontal scrolling animation for hero section */
+
+/* Container for scrolling strip - hides overflow */
+.scroll-container {
+  width: 100%;
+  overflow: hidden; /* Hide characters outside container */
+  margin: 60px 0;
+  position: relative;
+}
+
+/* Strip containing character images with scroll animation */
+.scroll-strip {
+  display: flex;
+  gap: 25px; /* Space between characters */
+  animation: scroll 60s linear infinite; /* Continuous scroll animation */
+  width: fit-content; /* Allow content to determine width */
+}
+
+/* Reverse direction for top strip - creates visual variety */
+.scroll-strip.reverse {
+  animation: scrollReverse 60s linear infinite;
+}
+
+/* Scroll animation moving left to right */
+@keyframes scroll {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-50%); /* Move halfway for seamless loop */
+  }
+}
+
+/* Reverse scroll animation moving right to left */
+@keyframes scrollReverse {
+  0% {
+      transform: translateX(-50%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+/* Individual character/emotion styling in scroll strip */
+.emotion {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0; /* Prevent characters from shrinking */
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Smooth scale transition */
+}
+
+/* Hover effect - enlarges character */
+.emotion:hover {
+  transform: scale(1.2);
+}
+
+/* ==================== DOWN ARROW NAVIGATION BUTTON ==================== */
+/* Circular button with bouncing animation for section navigation */
+
+.down-arrow {
+  position: absolute;
+  bottom: 80px; /* Position from bottom of section */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: 80px;
+  height: 80px;
+  background-color: #2C2C2C; /* Dark background */
+  border-radius: 50%; /* Perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: bounce 2s infinite; /* Continuous bounce animation - CSS animation requirement */
+  z-index: 10; /* Appear above other content */
+  border: none;
+  margin: 30px 0;
+}
+
+/* Hover effect - changes background to pink */
+.down-arrow:hover {
+  background-color: #F0A8B8;
+}
+
+/* Change arrow color on hover */
+.down-arrow:hover .arrow-icon {
+  stroke: #2C2C2C;
+}
+
+/* Default arrow icon color */
+.arrow-icon {
+  stroke: #F5F2ED;
+  transition: stroke 0.3s ease;
+}
+
+/* Bounce animation keyframes - creates gentle up and down motion */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0); /* Normal position */
+  }
+  40% {
+      transform: translateX(-50%) translateY(-15px); /* Up position */
+  }
+  60% {
+      transform: translateX(-50%) translateY(-8px); /* Mid bounce */
+  }
+}
+
+/* ==================== HERO SECTION ==================== */
+/* Landing page styling with centered content */
+
+#hero {
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+/* Additional padding around hero content */
+.hero-padding {
+  padding: 65px;
+}
+
+/* Main hero heading - large, bold, responsive */
+#hero h1 {
+  font-size: clamp(3rem, 6vw, 5rem); /* Responsive font size */
+  font-weight: 700;
+  margin: 40px 0 30px;
+  color: #2C2C2C;
+  text-align: center;
+}
+
+/* Hero subtitle text */
+#hero p {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #2C2C2C;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+/* ==================== INFO SECTIONS ==================== */
+/* Layout for informational sections (What is, Why Practice, How Help) */
+
+/* Container for info section content - 2 column grid on desktop */
+.info-section {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: 80px;
+  align-items: center;
+}
+
+/* Two column layout on larger screens */
+@media (min-width: 968px) {
+  .info-section {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Content box styling with rounded corners */
+.info-box {
+  padding: 75px;
+  border-radius: 80px; /* Large border radius for soft appearance */
+  position: relative;
+}
+
+/* Yellow variant for alternating sections */
+.info-box.yellow {
+  background-color: #F4D06F;
+}
+
+/* Pink variant for alternating sections */
+.info-box.pink {
+  background-color: #F0A8B8;
+}
+
+/* Info box heading styling */
+.info-box h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive heading */
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #2C2C2C;
+}
+
+/* Info box paragraph text */
+.info-box p {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  line-height: 1.7; /* Good readability spacing */
+  color: #2C2C2C;
+}
+
+/* Container for large character displays */
+.character-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Large character images in info sections */
+.character-large {
+  width: 400px;
+  height: 300px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  object-fit: contain; /* Maintain aspect ratio */
+}
+
+/* Hover effect - enlarges character */
+.character-large:hover {
+  transform: scale(1.15);
+}
+
+/* ==================== SECTION BACKGROUNDS ==================== */
+/* Custom background images for different sections */
+
+/* What is Mindfulness section background */
+#what-is {
+  background-image: url('images/background1.png');
+  background-size: cover;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: top;
+}
+
+/* Why Practice section background */
+#why-practice {
+  background-image: url('images/background2.png');
+  background-size: cover;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: top;
+}
+
+/* How InnerBloom Can Help section background */
+#how-help {
+  background-image: url('images/background3.png');
+  background-size: cover;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: top;
+}
+
+/* ==================== PRACTICES SECTION ==================== */
+/* Flip card gallery for mindfulness practices */
+
+#practices {
+  padding: 120px 40px;
+  min-height: auto; /* Allow section to expand based on content */
+}
+
+/* Content container for practices section */
+.practices-content {
+  max-width: 1600px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Section heading */
+.practices-content h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2C2C2C;
+}
+
+/* Section subtitle/description */
+.practices-content > p {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  margin-bottom: 100px;
+  color: #2C2C2C;
+}
+
+/* Grid container for practice cards - 3 columns on desktop */
+.practices-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 60px;
+  justify-items: center;
+  align-items: start;
+}
+
+/* Individual practice card with flip functionality */
+.practice-card {
+  text-align: center;
+  cursor: pointer;
+  perspective: 1000px; /* 3D perspective for flip effect */
+  width: 350px;
+  height: 350px;
+}
+
+/* Inner container for flip animation */
+.practice-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease; /* Smooth flip transition */
+  transform-style: preserve-3d; /* Enable 3D transforms */
+}
+
+/* Flipped state - rotates card 180 degrees */
+.practice-card.flipped .practice-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and back faces of card */
+.practice-card-front, 
+.practice-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide back face when not visible */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Front face positioning */
+.practice-card-front {
+  z-index: 2;
+}
+
+/* Front face image */
+.practice-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Back face - rotated 180 degrees initially */
+.practice-card-back {
+  transform: rotateY(180deg);
+  position: relative;
+}
+
+/* Background image for card back */
+.practice-back {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* Text content on card back */
+.prac-text {
+  position: relative;
+  z-index: 2;
+  color: #2c2c2c;
+  padding: 20px;
+  text-align: center;
+  width: 70%;
+  max-width: 250px;
+}
+
+/* Practice card heading */
+.practice-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 12px 0 8px;
+  color: #2C2C2C;
+}
+
+/* Practice card description */
+.practice-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #2C2C2C;
+}
+
+/* Character image on card front with hover effect */
+.practice-face {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect on card front - enlarges character */
+.practice-card-front:hover .practice-face {
+  transform: scale(1.15);
+}
+
+/* Mobile responsive - single column layout */
+@media (max-width: 768px) {
+  .practices-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+  }
+}
+
+/* Tablet responsive - two column layout */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .practices-container {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==================== SELF COMPASSION GALLERY SECTION ==================== */
+/* Sliding card gallery with left/right navigation */
+
+#compassion-gallery {
+  padding: 120px 40px;
+  background-color: #f6f5f1;
+}
+
+/* Gallery content container */
+.gallery-content {
+  max-width: 1400px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Gallery heading */
+.gallery-content h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2C2C2C;
+}
+
+/* Gallery subtitle */
+.gallery-content > p {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  margin-bottom: 100px;
+  color: #2C2C2C;
+}
+
+/* Container for gallery with arrow buttons and card */
+.gallery-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+/* Circular arrow buttons for navigation */
+.gallery-arrow {
+  width: 80px;
+  height: 80px;
+  background-color: #2C2C2C;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+/* Hover effect on arrow buttons */
+.gallery-arrow:hover {
+  background-color: #F0A8B8;
+  transform: scale(1.1);
+}
+
+/* Arrow SVG styling */
+.gallery-arrow svg {
+  width: 40px;
+  height: 40px;
+  color: #F5F2ED;
+  transition: color 0.3s ease;
+}
+
+/* Arrow color change on hover */
+.gallery-arrow:hover svg {
+  color: #2C2C2C;
+}
+
+/* Wrapper for compassion card and character */
+.compassion-card-wrapper {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+}
+
+/* Compassion message card with rounded corners */
+.compassion-card {
+  background-color: #F4D06F; /* Default yellow background */
+  padding: 80px 100px;
+  border-radius: 60px;
+  position: relative;
+  transition: all 0.3s ease; /* Smooth transitions for slide animation */
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Message text inside card */
+.compassion-card p {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+  color: #3A7D5A; /* Default green text */
+  transition: color 0.3s ease; /* Smooth color transitions */
+}
+
+/* Character image positioned at bottom left of card */
+.compassion-character {
+  position: absolute;
+  bottom: -80px;
+  left: 10px;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect on character */
+.compassion-character:hover {
+  transform: scale(1.15);
+}
+
+/* Mobile responsive adjustments for gallery */
+@media (max-width: 768px) {
+  .gallery-container {
+      gap: 30px;
+  }
+  
+  .gallery-arrow {
+      width: 60px;
+      height: 60px;
+  }
+  
+  .gallery-arrow svg {
+      width: 30px;
+      height: 30px;
+  }
+  
+  .compassion-card {
+      padding: 60px 40px;
+      min-height: 300px;
+  }
+  
+  .compassion-character {
+      width: 120px;
+      height: 120px;
+      left: 30px;
+      bottom: -40px;
+  }
+}
+
+/* ==================== BREATHING SECTION ==================== */
+/* Interactive breathing exercise with animation and audio controls */
+
+#breathing {
+  padding: 120px 40px;
+  background-image: url('images/background4.png');
+  background-size: cover;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+
+/* Breathing content container */
+.breathing-content {
+  text-align: center;
+  max-width: 1000px;
+}
+
+/* Breathing section heading */
+.breathing-content h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2C2C2C;
+}
+
+/* Breathing section instructions */
+.breathing-content p {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  margin-bottom: 80px;
+  color: #2C2C2C;
+}
+
+/* Container for breathing flower animation */
+.breathing-flower {
+  width: 450px;
+  height: 450px;
+  position: relative;
+  margin: 0 auto 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Flower image and SVG sizing */
+.breathing-flower svg,
+.breathing-flower img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Breathing animation keyframes - scales up and down to simulate breathing */
+@keyframes breathe {
+  0%, 100% {
+      transform: scale(1); /* Normal size */
+  }
+  50% {
+      transform: scale(1.15); /* Expanded size */
+  }
+}
+
+/* Controls container for sound and pause buttons - positioned to the right */
+.controls {
+  display: flex;
+  gap: 40px;
+  justify-content: flex-end; /* Align buttons to the right */
+  align-items: center;
+  padding-right: 700px; /* Increased spacing from the edge */
+  max-width: 1000px; /* Match the breathing-content max-width */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Mobile adjustment - center controls on small screens */
+@media (max-width: 768px) {
+  .controls {
+    justify-content: center; /* Center on mobile for better accessibility */
+    padding-right: 0;
+  }
+}
+
+/* Generic control button styling (fallback) */
+.control-btn {
+  width: 80px;
+  height: 80px;
+  background-color: #2C2C2C;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Control button hover effect */
+.control-btn:hover {
+  background-color: #F0A8B8;
+  transform: scale(1.1);
+}
+
+/* SVG hover color change */
+.control-btn:hover svg {
+  fill: #2C2C2C;
+  stroke: #2C2C2C;
+}
+
+/* Default SVG color */
+.control-btn svg {
+  width: 40px;
+  height: 40px;
+  fill: #F5F2ED;
+  stroke: #F5F2ED;
+  transition: all 0.3s ease;
+}
+
+/* ==================== HEART ICONS STYLING ==================== */
+/* Decorative heart icons with hover effects */
+
+.heart-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* Hover effect on heart icons */
+.heart-icons img {
+  transition: transform 0.3s ease;
+}
+
+.heart-icons img:hover {
+  transform: scale(1.15);
+}
+
+/* ==================== AFFIRMATIONS SECTION ==================== */
+/* Interactive affirmation cards that change on button click */
+
+#affirmations {
+  padding: 120px 40px;
+}
+
+/* Affirmations content - two column grid on desktop */
+.affirmations-content {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: 80px;
+  align-items: center;
+}
+
+/* Two column layout on larger screens */
+@media (min-width: 968px) {
+  .affirmations-content {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Affirmations section heading */
+.affirmations-text h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #2C2C2C;
+}
+
+/* Affirmations description text */
+.affirmations-text p {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  line-height: 1.7;
+  margin-bottom: 200px;
+  color: #2C2C2C;
+}
+
+/* Button group container */
+.button-group {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+/* Change affirmation button styling */
+.change-btn {
+  padding: 22px 50px;
+  background-color: #2C2C2C;
+  color: #F5F2ED;
+  border: none;
+  border-radius: 60px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Change button hover effect */
+.change-btn:hover {
+  background-color: #F0A8B8;
+  transform: scale(1.05);
+}
+
+/* Change button text and icon color on hover */
+.change-btn:hover,
+.change-btn:hover svg {
+  color: #2C2C2C;
+  stroke: #2C2C2C;
+}
+
+/* Download button - circular with icon */
+.download-btn {
+  width: 80px;
+  height: 80px;
+  background-color: #2C2C2C;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Download button hover effect */
+.download-btn:hover {
+  background-color: #F0A8B8;
+  transform: scale(1.1);
+}
+
+/* Download button icon color on hover */
+.download-btn:hover svg {
+  stroke: #2C2C2C;
+}
+
+/* Download button icon default color */
+.download-btn svg {
+  width: 32px;
+  height: 32px;
+  stroke: #F5F2ED;
+  transition: stroke 0.3s ease;
+}
+
+/* Circular affirmation display container */
+.affirmation-display {
+  padding: 100px 80px;
+  border-radius: 50%; /* Perfect circle */
+  width: 100%;
+  max-width: 550px;
+  aspect-ratio: 1; /* Maintain square aspect ratio */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  transition: background-color 0.5s ease; /* Smooth color transitions */
+}
+
+/* Affirmation text inside circle */
+.affirmation-display p {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 50px;
+  transition: color 0.5s ease;
+}
+
+/* ==================== SHOELACE ALERT STYLING ==================== */
+/* Fixed position notification alert for download confirmation */
+
+/* Alert container - always positioned at top right of viewport */
+.alert-container {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 999999 !important; /* Very high z-index to appear above everything */
+  pointer-events: none !important; /* Allow clicks to pass through container */
+  max-width: 400px;
+  width: auto;
+}
+
+/* Alert component styling */
+#downloadAlert {
+  pointer-events: auto !important; /* Re-enable clicks on alert itself */
+  font-size: 1.2rem;
+  font-weight: 500;
+  position: static !important;
+}
+
+/* Style the base/container of the alert */
+#downloadAlert::part(base) {
+  background-color: #F0A8B8; /* Pink background */
+  border: 2px solid #F0A8B8;
+  color: #F5F2ED; /* Light text */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  border-radius: 50px; /* Rounded pill shape */
+  padding: 1rem 1.5rem;
+}
+
+/* Style the message text in alert */
+#downloadAlert::part(message) {
+  color: #F5F2ED;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+/* Style the icon in alert */
+#downloadAlert::part(icon) {
+  color: #F5F2ED;
+}
+
+/* Style the close button */
+#downloadAlert::part(close-button) {
+  color: #F5F2ED;
+}
+
+/* Close button hover effect */
+#downloadAlert::part(close-button):hover {
+  color: #2C2C2C;
+}
+
+/* Mobile responsive alert positioning */
+@media (max-width: 768px) {
+  .alert-container {
+    top: 10px !important;
+    right: 10px !important;
+    left: 10px !important;
+    max-width: none !important;
+  }
+}
+
+/* ==================== AFFIRMATION CHARACTER HOVER EFFECT ==================== */
+/* Hover effect for character in affirmation circle */
+
+#affirmationChar {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+#affirmationChar:hover {
+  transform: scale(1.15);
+}
+
+/* Affirmation text specific styling */
+#affirmationText {
+  margin-top: 50px;
+  font-size: 40px;
+}
+
+/* ==================== HELP SECTION ==================== */
+/* Mental health resources section with grid layout */
+
+#help {
+  padding: 120px 40px;
+}
+
+/* Help section content container */
+.help-content {
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* Header with decorative icons */
+.help-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap; /* Wrap on smaller screens */
+}
+
+/* Help section main heading */
+.help-content h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2C2C2C;
+}
+
+/* Introductory paragraph for help section */
+.help-intro {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  line-height: 1.7;
+  margin-bottom: 80px;
+  color: #2C2C2C;
+  max-width: 700px;
+}
+
+/* Grid layout for help resource cards */
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+  gap: 40px;
+  padding-bottom: 0;
+}
+
+/* Individual help resource card */
+.help-card {
+  background-color: #F4D06F; /* Yellow background */
+  padding: 50px;
+  border-radius: 40px; /* Rounded corners */
+}
+
+/* Help card organization name heading */
+.help-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #2C2C2C;
+}
+
+/* Help card description text */
+.help-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #2C2C2C;
+}
+
+/* Contact information row (phone/website) */
+.help-card .contact {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between icon and text */
+  margin-bottom: 15px;
+  color: #2C2C2C;
+  font-size: 1.1rem;
+}
+
+/* SVG icons for phone and website */
+.help-card .contact svg {
+  width: 20px;
+  height: 20px;
+  stroke: #2C2C2C;
+  stroke-width: 2;
+  fill: none;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* Website links styling */
+.help-card a {
+  color: #2C2C2C;
+  text-decoration: none;
+  word-break: break-word; /* Break long URLs if needed */
+}
+
+/* Link hover effect - underline */
+.help-card a:hover {
+  text-decoration: underline;
+}
