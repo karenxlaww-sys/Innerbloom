@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnerBloom - Where mindfulness feels at home</title>
+    
+    <!-- Google Fonts preconnect for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- DM Sans font family for consistent typography -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Shoelace UI Component Library - provides pre-built web components -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+    
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- GSAP Animation Library - for smooth JavaScript animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- GSAP ScrollTrigger Plugin - for scroll-based animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Background music audio element for breathing section -->
+    <!-- Loops continuously when playing -->
+    <audio id="breathingMusic" loop>
+        <source src="images/breathingflowermusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <!-- Landing section with animated scrolling character strips -->
+    <section id="hero">
+        <!-- Top scrolling strip container -->
+        <div class="scroll-container">
+            <!-- Reverse animation direction for visual variety -->
+            <div class="scroll-strip reverse" id="topStrip">
+                <!-- Characters populated dynamically via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Main hero content with padding -->
+        <div class="hero-padding">
+            <!-- Main heading - animated with GSAP on page load -->
+            <h1>Welcome to InnerBloom!</h1>
+            
+            <!-- Shoelace Tooltip Component (1/3) - provides hover information -->
+            <sl-tooltip content="Your journey to mindfulness starts here">
+                <p>Where mindfulness feels at home.</p>
+            </sl-tooltip>
+        </div>
+
+        <!-- Bottom scrolling strip container -->
+        <div class="scroll-container">
+            <!-- Normal forward animation direction -->
+            <div class="scroll-strip" id="bottomStrip">
+                <!-- Characters populated dynamically via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Navigation button to next section -->
+        <!-- SVG arrow with custom animation -->
+        <button class="down-arrow" onclick="scrollToSection('what-is')">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <!-- Animated arrow path - SVG animation requirement -->
+                <path d="M20 10 L20 30 M20 30 L12 22 M20 30 L28 22" class="arrow-icon-animated" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </section>
+
+    <!-- ==================== WHAT IS MINDFULNESS SECTION ==================== -->
+    <!-- Educational section explaining mindfulness concept -->
+    <section id="what-is">
+        <div class="info-section">
+            <!-- Character visual on left -->
+            <div class="character-display">
+                <img class="character-large" src="images/square.png" alt="character">
+            </div>
+            
+            <!-- Content box with yellow background -->
+            <div class="info-box yellow">
+                <h2>What is Mindfulness?</h2>
+                <p>Mindfulness means paying attention to the present moment without judgement. It's about noticing thoughts, feelings, and surroundings with calm awareness.</p>
+            </div>
+        </div>
+        
+        <!-- Navigation to next section -->
+        <button class="down-arrow" onclick="scrollToSection('why-practice')">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M20 10 L20 30 M20 30 L12 22 M20 30 L28 22" class="arrow-icon" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </section>
+
+    <!-- ==================== WHY PRACTICE SECTION ==================== -->
+    <!-- Section explaining benefits of mindfulness -->
+    <section id="why-practice">
+        <div class="info-section">
+            <!-- Content box on left (reversed layout) -->
+            <div class="info-box pink">
+                <h2>Why Practice Mindfulness?</h2>
+                <p>Just a few minutes a day can reduce stress, improve focus, and build resilience. Mindfulness is like exercise for the mind.</p>
+            </div>
+            
+            <!-- Character visual on right -->
+            <div class="character-display">
+                <img class="character-large" src="images/pill.png" alt="character">
+            </div>
+        </div>
+        
+        <!-- Navigation to next section -->
+        <button class="down-arrow" onclick="scrollToSection('how-help')">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M20 10 L20 30 M20 30 L12 22 M20 30 L28 22" class="arrow-icon" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </section>
+
+    <!-- ==================== HOW INNERBLOOM CAN HELP SECTION ==================== -->
+    <!-- Section describing website features and benefits -->
+    <section id="how-help">
+        <div class="info-section">
+            <!-- Character visual on left -->
+            <div class="character-display">
+                <img class="character-large" src="images/heart.png" alt="character">
+            </div>
+            
+            <!-- Content box with yellow background -->
+            <div class="info-box yellow">
+                <h2>How InnerBloom can help!</h2>
+                <p>Innerbloom guides you to mindfulness in a way that feels calm, engaging, and supportive. Through interactive tools like breathing animations, gentle hover effects, and uplifting affirmations, you can learn practical mindfulness techniques while feeling reassured and at ease. Our playful, approachable design makes exploring mindfulness simple, enjoyable, and emotionally comforting.</p>
+            </div>
+        </div>
+        
+        <!-- Navigation to practices section -->
+        <button class="down-arrow" onclick="scrollToSection('practices')">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M20 10 L20 30 M20 30 L12 22 M20 30 L28 22" class="arrow-icon" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </section>
+
+    <!-- ==================== MINDFULNESS PRACTICES SECTION ==================== -->
+    <!-- Interactive card flip gallery showcasing mindfulness techniques -->
+    <section id="practices">
+        <div class="practices-content">
+            <h2>Mindfulness Practices</h2>
+            <p>Click on the characters to reveal a practice!</p>
+                
+            <!-- Grid container for practice cards - 3 columns on desktop -->
+            <div class="practices-container">
+
+                <!-- Practice Card 1: Breathing -->
+                <!-- Click triggers flip animation to reveal content -->
+                <div class="practice-card" onclick="flipCard(event)">
+                    <div class="practice-card-inner">
+                        <!-- Front face of card -->
+                        <div class="practice-card-front">
+                            <img class="practice-face" src="images/flower.png" alt="character">
+                        </div>
+                        <!-- Back face of card with practice information -->
+                        <div class="practice-card-back">
+                            <img class="practice-back" src="practicecards/flowerback.png" alt="character">
+                            <div class="prac-text">
+                                <h3>Breathing</h3>
+                                <p>Try 4-7-8: Inhale 4, hold 7, exhale 8.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Card 2: Mindful Minute -->
+                <div class="practice-card" onclick="flipCard(event)">
+                    <div class="practice-card-inner">
+                        <div class="practice-card-front">
+                            <img class="practice-face" src="images/square.png" alt="character">
+                        </div>
+                        <div class="practice-card-back">
+                            <img class="practice-back" src="practicecards/squareback.png" alt="character">
+                            <div class="prac-text">
+                                <h3>Mindful Minute</h3>
+                                <p>Notice 5 things: see, hear, feel, smell, taste.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Card 3: Body Scan -->
+                <div class="practice-card" onclick="flipCard(event)">
+                    <div class="practice-card-inner">
+                        <div class="practice-card-front">
+                            <img class="practice-face" src="images/circle.png" alt="character">
+                        </div>
+                        <div class="practice-card-back">
+                            <img class="practice-back" src="practicecards/circleback.png" alt="character">
+                            <div class="prac-text">
+                                <h3>Body Scan</h3>
+                                <p>Notice each part from head to toe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Card 4: Gratitude -->
+                <div class="practice-card" onclick="flipCard(event)">
+                    <div class="practice-card-inner">
+                        <div class="practice-card-front">
+                            <img class="practice-face" src="images/pill.png" alt="character">
+                        </div>
+                        <div class="practice-card-back">
+                            <img class="practice-back" src="practicecards/pillback.png" alt="character">
+                            <div class="prac-text">
+                                <h3>Gratitude</h3>
+                                <p>List 3 things you're grateful for today.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Practice Card 5: Walking -->
+                <div class="practice-card" onclick="flipCard(event)">
+                    <div class="practice-card-inner">
+                        <div class="practice-card-front">
+                            <img class="practice-face" src="images/thumb.png" alt="character">
+                        </div>
+                        <div class="practice-card-back">
+                            <img class="practice-back" src="practicecards/thumbback.png" alt="character">
+                            <div class="prac-text">
+                                <h3>Walking</h3>
+                                <p>Walk slowly, feel each step.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Practice Card 6: Journaling -->
+                <div class="practice-card" onclick="flipCard(event)">
+                    <div class="practice-card-inner">
+                        <div class="practice-card-front">
+                            <img class="practice-face" src="images/heart.png" alt="character">
+                        </div>
+                        <div class="practice-card-back">
+                            <img class="practice-back" src="practicecards/heartback.png" alt="character">
+                            <div class="prac-text">
+                                <h3>Journaling</h3>
+                                <p>Write your thoughts without judgement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Navigation to self compassion gallery -->
+            <button class="down-arrow" onclick="scrollToSection('compassion-gallery')">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M20 10 L20 30 M20 30 L12 22 M20 30 L28 22" class="arrow-icon" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==================== SELF COMPASSION GALLERY SECTION ==================== -->
+    <!-- Interactive sliding gallery with compassion messages -->
+    <section id="compassion-gallery">
+        <div class="gallery-content">
+            <h2>Self Compassion Gallery</h2>
+            <p>Take the time to say these to yourself.</p>
+            
+            <!-- Gallery container with left/right navigation -->
+            <div class="gallery-container">
+                <!-- Previous button - slides to previous message -->
+                <button class="gallery-arrow left" onclick="changeCompassionCard(-1)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                
+                <!-- Card wrapper containing message and character -->
+                <div class="compassion-card-wrapper">
+                    <!-- Message card with dynamic background color -->
+                    <div class="compassion-card" id="compassionCard">
+                        <p id="compassionText">"It's human to repeat mistakes."</p>
+                    </div>
+                    <!-- Character image positioned at bottom left of card -->
+                    <img class="compassion-character" id="compassionChar" src="images/heart.png" alt="character">
+                </div>
+                
+                <!-- Next button - slides to next message -->
+                <button class="gallery-arrow right" onclick="changeCompassionCard(1)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Navigation to breathing section -->
+        <button class="down-arrow" onclick="scrollToSection('breathing')">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M20 10 L20 30 M20 30 L12 22 M20 30 L28 22" class="arrow-icon" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </section>
+
+    <!-- ==================== BREATHING EXERCISE SECTION ==================== -->
+    <!-- Interactive breathing exercise with animated flower and audio controls -->
+    <section id="breathing">
+        <div class="breathing-content">
+            <h2>Breathe with me!</h2>
+            <p>Follow along and match the breathing rhythm!</p>
+            
+            <!-- Animated breathing flower - CSS animation that scales up and down -->
+            <div class="breathing-flower">
+                <img src="images/breathingflower.png" alt="breathing flower" style="width: 100%; height: 100%; object-fit: contain; animation: breathe 4s ease-in-out infinite;">
+            </div>
+            
+            <!-- Audio and animation control buttons using Shoelace Components (2/3 & 3/3) -->
+            <div class="controls">
+                <!-- Sound toggle button - Shoelace Icon Button Component -->
+                <sl-icon-button name="volume-up" label="Sound" id="soundBtn" class="control-btn-shoelace"></sl-icon-button>
+                <!-- Pause/Play button - Shoelace Icon Button Component -->
+                <sl-icon-button name="pause-circle" label="Pause" id="pauseBtn" class="control-btn-shoelace"></sl-icon-button>
+            </div>
+        </div>
+        
+        <!-- Navigation to affirmations section -->
+        <button class="down-arrow" onclick="scrollToSection('affirmations')">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M20 10 L20 30 M20 30 L12 22 M20 30 L28 22" class="arrow-icon" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </section>
+
+    <!-- ==================== AFFIRMATIONS SECTION ==================== -->
+    <!-- Interactive affirmation cards that change on button click -->
+    <section id="affirmations">
+        <div class="affirmations-content">
+            <!-- Left side content with buttons -->
+            <div class="affirmations-text">
+                <!-- Decorative heart icons with hover effect -->
+                <div class="heart-icons">
+                    <img src="images/3heart.png" alt="3heartsimage" style="width: 250px; height: 150px; object-fit: contain;">
+                </div>
+                
+                <h2>Self love affirmations</h2>
+                <p>Affirmations are gentle reminders that help reframe your thoughts. By repeating simple, positive phrases, you can build calm, confidence, and self-compassion one thought at a time.</p>
+
+                <!-- Button group for download and change actions -->
+                <div class="button-group">
+                    <!-- Download button - triggers Shoelace alert notification -->
+                    <button class="download-btn" onclick="downloadAffirmation()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </button>
+                    <!-- Change affirmation button - cycles through different messages -->
+                    <button class="change-btn" onclick="changeAffirmation()">
+                        <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 4v6h6"/>
+                            <path d="M3.51 15a9 9 0 102.13-9.36L1 10"/>
+                        </svg>
+                        CHANGE
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right side circular affirmation display -->
+            <!-- Dynamic background and text colors change with each affirmation -->
+            <div class="affirmation-display" id="affirmationDisplay" style="background-color: #3A7D5A;">
+                <p id="affirmationText" style="color: #F0A8B8;">"I am calm, I am safe, I am present."</p>
+                <!-- Character image changes with each affirmation -->
+                <img id="affirmationChar" src="images/heart.png" alt="heartimage" style="width: 100px; height: 100px; object-fit: contain;">
+            </div>
+        </div>
+        
+        <!-- Navigation to help resources section -->
+        <button class="down-arrow" onclick="scrollToSection('help')">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M20 10 L20 30 M20 30 L12 22 M20 30 L28 22" class="arrow-icon" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </section>
+
+    <!-- ==================== HELP RESOURCES SECTION ==================== -->
+    <!-- Final section providing mental health support resources -->
+    <section id="help">
+        <div class="help-content">
+            <!-- Header with decorative thumbs up icons -->
+            <div class="help-header">
+                <img src="images/3thumb.png" alt="3thumbsimage" style="width: 250px; height: 150px; object-fit: contain;">
+            </div>
+            
+            <h2>Find more help</h2>
+            <p class="help-intro">If you need extra support, you're not alone. Explore these trusted resources for professional guidance, mental health services, and community care beyond this website.</p>
+            
+            <!-- Grid of resource cards - responsive layout -->
+            <div class="help-grid">
+                <!-- Resource Card 1: Lifeline -->
+                <div class="help-card">
+                    <h3>Lifeline</h3>
+                    <p>24/7 crisis support for anyone in distress or experiencing thoughts of suicide.</p>
+                    <!-- Phone contact -->
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        13 11 14
+                    </div>
+                    <!-- Website link -->
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <a href="https://www.lifeline.org.au" target="_blank">lifeline.org.au</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 2: 13YARN -->
+                <div class="help-card">
+                    <h3>13YARN</h3>
+                    <p>A crisis support line for Aboriginal and Torres Strait Islander peoples.</p>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        13 92 76
+                    </div>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <a href="https://www.13yarn.org.au" target="_blank">13yarn.org.au</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 3: Beyond Blue -->
+                <div class="help-card">
+                    <h3>Beyond Blue</h3>
+                    <p>Support for anxiety, depression, and everyday mental health challenges.</p>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        1300 22 4636
+                    </div>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <a href="https://www.beyondblue.org.au" target="_blank">beyondblue.org.au</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 4: Kids Helpline -->
+                <div class="help-card">
+                    <h3>Kids Helpline</h3>
+                    <p>Confidential counselling service for young people aged 5 to 25.</p>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        1800 55 1800
+                    </div>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <a href="https://www.kidshelpline.com.au" target="_blank">kidshelpline.com.au</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 5: Head to Health -->
+                <div class="help-card">
+                    <h3>Head to Health</h3>
+                    <p>Australian Government portal connecting people to digital mental health resources.</p>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        13 11 14
+                    </div>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <a href="https://www.headtohealth.gov.au" target="_blank">headtohealth.gov.au</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 6: Suicide Call Back Service -->
+                <div class="help-card">
+                    <h3>Suicide Call Back Service</h3>
+                    <p>Free professional counselling for people affected by suicide.</p>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        1300 659 467
+                    </div>
+                    <div class="contact">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <a href="https://www.suicidecallbackservice.org.au" target="_blank">suicidecallbackservice.org.au</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SHOELACE ALERT COMPONENT ==================== -->
+    <!-- Fixed position alert container for download notifications -->
+    <!-- Positioned at top right of viewport, always visible -->
+    <div class="alert-container">
+        <!-- Shoelace Alert Component - shows success message when affirmation is "downloaded" -->
+        <!-- Auto-closes after 2 seconds (duration="2000") -->
+        <sl-alert id="downloadAlert" variant="success" duration="2000" closable>
+            <sl-icon slot="icon" name="check-circle"></sl-icon>
+            <strong>Affirmation Card Downloaded!</strong>
+        </sl-alert>
+    </div>
+
+    <!-- JavaScript file containing all interactive functionality -->
+    <script src="main.js"> </script>
+</body>
+</html>
+
